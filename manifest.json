@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "ClearRead - 网页放大镜",
   "version": "1.0.0",
-  "description": "专业的网页文字放大工具，助您清晰阅读，防止被小字忽悠。支持自由缩放、调节大小，适配所有网站。",
+  "description": "网页文字放大工具，助您清晰阅读，防止被小字忽悠。支持自由缩放、调节大小。",
   "icons": {
     "16": "icon-16.png",
     "48": "icon-16.png",
@@ -22,6 +22,6 @@
     "default_title": "ClearRead - 网页放大镜"
   },
   "permissions": ["activeTab", "scripting"],
-  "author": "ClearRead Team",
-  "homepage_url": "https://github.com/clearread"
+  "author": "StuPeter",
+  "homepage_url": "https://github.com/StuPeter/ClearRead"
 }
