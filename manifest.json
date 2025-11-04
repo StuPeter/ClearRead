@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "小字放大镜",
+  "version": "1.0",
+  "description": "悬停放大网页小字，防止被忽悠",
+  "icons": {
+    "16": "icon-16.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["magnifier.css"]
+    }
+  ],
+  "action": {},
+  "permissions": ["activeTab", "scripting"]
+}
