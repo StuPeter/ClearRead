@@ -1,4 +1,4 @@
-console.log('放大镜脚本已加载');
+// 网页放大镜扩展
 
 // 全局状态
 let isMagnifierActive = false;
@@ -29,13 +29,13 @@ function showStatus(message) {
       position: fixed;
       top: 20px;
       right: 20px;
-      background: rgba(102, 126, 234, 0.95);
+      background: rgba(51, 51, 51, 0.95);
       color: white;
       padding: 12px 20px;
       border-radius: 8px;
       font-size: 14px;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       z-index: 2147483646;
       opacity: 0;
       transform: translateY(-20px);
@@ -74,7 +74,6 @@ function getDocumentSize() {
 
 // 创建放大镜 - DOM克隆方案（滚动安全）
 function createMagnifier() {
-  console.log('创建放大镜（DOM克隆方案）...');
   if (lens) return;
 
   const { width: docWidth, height: docHeight } = getDocumentSize();
@@ -85,9 +84,9 @@ function createMagnifier() {
     position: fixed;
     width: ${config.lensWidth}px;
     height: ${config.lensHeight}px;
-    border: 3px solid #667eea;
+    border: 3px solid #333333;
     border-radius: 50%;
-    box-shadow: 0 0 20px rgba(102, 126, 234, 0.6), 0 8px 32px rgba(0,0,0,0.3);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6), 0 8px 32px rgba(0,0,0,0.3);
     pointer-events: none;
     z-index: 2147483647;
     overflow: hidden;
@@ -98,9 +97,9 @@ function createMagnifier() {
   const crosshair = document.createElement('div');
   crosshair.style.cssText = `position: absolute; left:0; top:0; width:100%; height:100%; pointer-events:none;`;
   const hLine = document.createElement('div');
-  hLine.style.cssText = `position: absolute; left:0; top:50%; width:100%; height:1px; background: rgba(102,126,234,0.5);`;
+  hLine.style.cssText = `position: absolute; left:0; top:50%; width:100%; height:1px; background: rgba(0,0,0,0.5);`;
   const vLine = document.createElement('div');
-  vLine.style.cssText = `position: absolute; left:50%; top:0; width:1px; height:100%; background: rgba(102,126,234,0.5);`;
+  vLine.style.cssText = `position: absolute; left:50%; top:0; width:1px; height:100%; background: rgba(0,0,0,0.5);`;
   crosshair.appendChild(hLine);
   crosshair.appendChild(vLine);
   lens.appendChild(crosshair);
@@ -140,7 +139,6 @@ function createMagnifier() {
   contentClone.appendChild(bodyContent);
   lens.appendChild(contentClone);
   document.body.appendChild(lens);
-  console.log('放大镜创建完成');
 }
 
 // 移除放大镜
@@ -257,8 +255,16 @@ if (typeof chrome !== 'undefined' && chrome.runtime) {
 // 页面加载完成提示
 window.addEventListener('load', () => {
   setTimeout(() => {
-    showStatus('💡 点击浏览器工具栏图标启动放大镜');
-  }, 1000);
+    showStatus(`
+      <div style="line-height:1.6">
+        <div style="font-weight:bold; margin-bottom:8px; font-size:15px">🔍 网页放大镜</div>
+        <div style="font-size:13px; opacity:0.9">
+          点击工具栏图标启动/关闭<br>
+          <span style="color:#aaa">快捷键: ESC 关闭 | +/- 缩放 | [] 大小 | R 重置</span>
+        </div>
+      </div>
+    `);
+  }, 1500);
 });
 
 // 页面卸载清理

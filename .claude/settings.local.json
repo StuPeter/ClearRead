@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python gen_icon.py)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

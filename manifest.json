@@ -1,10 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "小字放大镜",
-  "version": "1.0",
-  "description": "悬停放大网页小字，防止被忽悠",
+  "name": "ClearRead - 网页放大镜",
+  "version": "1.0.0",
+  "description": "专业的网页文字放大工具，助您清晰阅读，防止被小字忽悠。支持自由缩放、调节大小，适配所有网站。",
   "icons": {
-    "16": "icon-16.png"
+    "16": "icon-16.png",
+    "48": "icon-16.png",
+    "128": "icon-16.png"
   },
   "background": {
     "service_worker": "background.js"
@@ -16,6 +18,10 @@
       "css": ["magnifier.css"]
     }
   ],
-  "action": {},
-  "permissions": ["activeTab", "scripting"]
+  "action": {
+    "default_title": "ClearRead - 网页放大镜"
+  },
+  "permissions": ["activeTab", "scripting"],
+  "author": "ClearRead Team",
+  "homepage_url": "https://github.com/clearread"
 }
